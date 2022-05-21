@@ -1,0 +1,21 @@
+<div class="pt-4">
+  <button
+    pButton
+    label="Add GCode"
+    icon="pi pi-plus"
+    (click)="addGCode()"
+  ></button>
+  <h2 class="text-500 text-base">All GCodes</h2>
+  <p-scrollPanel
+    [style]="{ width: '100%', height: 'calc(100vh - 7.3rem)' }"
+    styleClass="custombar1"
+  >
+    <div class="w-full flex flex-column align-items-stretch">
+      <app-gcode-list-item
+        *ngFor="let gcode of gcodes$ | async; trackBy: trackByFn"
+        [gcode]="gcode"
+        (onEdit)="editGCode(gcode)"
+      ></app-gcode-list-item>
+    </div>
+  </p-scrollPanel>
+</div>

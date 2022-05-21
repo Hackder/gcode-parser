@@ -1,4 +1,9 @@
-<p>editor-page works!</p>
-<button pButton label="Go back" [routerLink]="['/front-page']"></button>
-<p>{{ file.filepath }}</p>
-<p>{{ file.content.length }}</p>
+<div class="container">
+  <div class="state">
+    <button pButton label="Go back" [routerLink]="['/front-page']"></button>
+    <app-modifications></app-modifications>
+  </div>
+  <div class="gcodes">
+    <app-gcode-list></app-gcode-list>
+  </div>
+</div>

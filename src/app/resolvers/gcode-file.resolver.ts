@@ -5,7 +5,7 @@ import {
   ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Base64 } from 'js-base64';
-import { from, map, tap, Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { GCodeFile } from '../types/file';
 import { fs } from '@tauri-apps/api';
 
@@ -21,7 +21,6 @@ export class GCodeFileResolver implements Resolve<GCodeFile> {
     const filepath = Base64.decode(encodedFilepath);
 
     return from(fs.readTextFile(filepath)).pipe(
-      tap(console.log),
       map((text) => ({
         filepath,
         content: text,

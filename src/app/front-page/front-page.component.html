@@ -6,7 +6,6 @@
       type="button"
       i18n-label="Open file|Open file button text@@openFileButton"
       label="Open file"
-      class="p-button-sm"
       icon="pi pi-file"
     ></button>
     <h2
@@ -24,7 +23,7 @@
         *ngFor="let file of recentlyOpenedFiles | async"
         type="button"
         [label]="file"
-        class="p-button-text p-button-secondary p-button-sm text-left"
+        class="p-button-text p-button-secondary text-left"
       ></button>
     </div>
   </div>

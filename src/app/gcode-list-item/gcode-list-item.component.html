@@ -1,0 +1,15 @@
+<div
+  class="flex flex-row px-3 py-2 align-items-center justify-content-between list-item"
+>
+  <div class="flex flex-column gap-1">
+    <p class="font-bold">{{ gcode?.gcode }}</p>
+    <p class="text-secondary">{{ gcode?.description }}</p>
+  </div>
+  <button
+    pButton
+    type="button"
+    icon="pi pi-pencil"
+    class="p-button-rounded p-button-text p-button-xs ml-2"
+    (click)="onEdit.emit()"
+  ></button>
+</div>

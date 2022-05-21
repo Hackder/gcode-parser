@@ -26,7 +26,6 @@ export class AppComponent {
     ];
 
     this.isLoading$ = router.events.pipe(
-      tap(console.log),
       filter((event) => validEvents.some((e) => event instanceof e)),
       map((event) => event instanceof NavigationStart)
     );

@@ -1,11 +1,36 @@
-@import 'primeflex/primeflex.scss';
+@import "primeflex/primeflex.scss";
 
 html,
 body,
 body > * {
   height: 100%;
+  font-size: 14px;
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.p-scrollpanel {
+  p {
+    padding: 0.5rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  &.custombar1 {
+    .p-scrollpanel-wrapper {
+      border-right: 9px solid var(--layer-1);
+    }
+
+    .p-scrollpanel-bar {
+      background-color: var(--surface-300);
+      opacity: 1;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: var(--primary-color);
+      }
+    }
+  }
 }
