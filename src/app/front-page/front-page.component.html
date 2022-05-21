@@ -1,0 +1,23 @@
+<div class="h-full w-full flex justify-content-center align-items-center">
+  <div class="flex flex-column" pFocusTrap>
+    <button
+      pButton
+      (click)="openDialog()"
+      type="button"
+      label="Open file"
+      class="p-button-sm"
+      icon="pi pi-file"
+    ></button>
+    <h2 class="text-500 text-base mb-1 mt-3">Recent</h2>
+    <div class="flex flex-column align-items-stretch">
+      <button
+        pButton
+        (click)="openFile(file)"
+        *ngFor="let file of recentlyOpened"
+        type="button"
+        [label]="file"
+        class="p-button-text p-button-secondary p-button-sm text-left"
+      ></button>
+    </div>
+  </div>
+</div>
