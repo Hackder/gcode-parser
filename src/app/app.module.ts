@@ -14,6 +14,8 @@ import { GCodeListComponent } from './gcode-list/gcode-list.component';
 import { GCodeListItemComponent } from './gcode-list-item/gcode-list-item.component';
 import { CreateGCodeComponent } from './create-gcode/create-gcode.component';
 import { ModificationsComponent } from './modifications/modifications.component';
+import { ModificationDialogComponent } from './modification-dialog/modification-dialog.component';
+import { ModificationComponent } from './modification/modification.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ModificationsComponent } from './modifications/modifications.component'
     GCodeListItemComponent,
     CreateGCodeComponent,
     ModificationsComponent,
+    ModificationDialogComponent,
+    ModificationComponent,
   ],
   imports: [
     BrowserModule,

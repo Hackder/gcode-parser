@@ -1,0 +1,55 @@
+<form
+  class="grid p-fluid"
+  [formGroup]="modificationForm"
+  (ngSubmit)="addModification()"
+>
+  <div class="field col-12">
+    <label for="location-type" class="block">Modification location</label>
+    <p-dropdown
+      id="location-type"
+      [options]="availableModifications"
+      placeholder="Select modification location"
+      optionLabel="name"
+      optionValue="type"
+      formControlName="type"
+      [ngClass]="{
+        'ng-invalid': type?.invalid,
+        'ng-dirty': type?.dirty
+      }"
+    ></p-dropdown>
+    <ng-container *ngIf="type?.invalid && (type?.dirty || type?.touched)">
+      <small *ngIf="type?.errors?.['required']" class="p-error block">
+        Modification location is required
+      </small>
+    </ng-container>
+  </div>
+  <div class="col-12 grid p-fluid" formGroupName="properties">
+    <ng-container *ngFor="let prop of properties | async">
+      <div class="field col-12" *ngIf="getForProp(prop.key) as control">
+        <label class="block">{{ prop.name }}</label>
+        <input
+          type="text"
+          pInputText
+          [formControlName]="prop.key"
+          [ngClass]="{
+            'ng-invalid': control?.invalid,
+            'ng-dirty': control?.dirty
+          }"
+        />
+        <ng-container
+          *ngIf="control?.invalid && (control?.dirty || control?.touched)"
+        >
+          <small *ngIf="control?.errors?.['required']" class="p-error block">
+            {{ prop.name }} is required
+          </small>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+  <button
+    pButton
+    label="Save"
+    type="submit"
+    [disabled]="modificationForm.invalid"
+  ></button>
+</form>

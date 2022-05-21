@@ -1,1 +1,24 @@
-<p>modifications works!</p>
+<div class="pl-3">
+  <h1>Modifications</h1>
+
+  <p-scrollPanel [style]="{ width: '100%', height: 'calc(100vh - 11rem)' }">
+    <p-accordion>
+      <p-accordionTab
+        *ngFor="let modification of modifications | async"
+        [transitionOptions]="'0ms'"
+        [header]="modification.location.getFormattedName()"
+      >
+        Content
+      </p-accordionTab>
+    </p-accordion>
+  </p-scrollPanel>
+  <footer class="flex flex-row justify-content-end pt-3">
+    <button
+      pButton
+      type="button"
+      icon="pi pi-plus"
+      label="Add modification"
+      (click)="addModification()"
+    ></button>
+  </footer>
+</div>

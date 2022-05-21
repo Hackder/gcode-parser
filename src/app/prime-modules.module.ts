@@ -5,6 +5,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { AccordionModule } from 'primeng/accordion';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   exports: [
@@ -14,6 +16,8 @@ import { InputTextModule } from 'primeng/inputtext';
     ScrollPanelModule,
     DynamicDialogModule,
     InputTextModule,
+    AccordionModule,
+    DropdownModule,
   ],
   providers: [DialogService],
 })
