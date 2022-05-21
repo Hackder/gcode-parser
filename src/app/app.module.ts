@@ -8,9 +8,10 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { PrimeModulesModule } from './prime-modules.module';
 import { NgxsStoreModule } from './state/ngxs-store.module';
 import { EditorPageComponent } from './editor-page/editor-page.component';
+import { LoadingOverlayComponent } from './loading-overlay/loading-overlay.component';
 
 @NgModule({
-  declarations: [AppComponent, FrontPageComponent, EditorPageComponent],
+  declarations: [AppComponent, FrontPageComponent, EditorPageComponent, LoadingOverlayComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -23,6 +23,7 @@
     "@ngxs/devtools-plugin": "^3.7.3",
     "@ngxs/logger-plugin": "^3.7.3",
     "@ngxs/router-plugin": "^3.7.3",
+    "@ngxs/storage-plugin": "^3.7.3",
     "@ngxs/store": "^3.7.3",
     "@tauri-apps/api": "^1.0.0-rc.5",
     "js-base64": "^3.7.2",

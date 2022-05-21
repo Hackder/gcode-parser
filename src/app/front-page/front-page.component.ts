@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
 import { dialog } from '@tauri-apps/api';
 import { Observable } from 'rxjs';
 import { OpenFile } from '../state/files.actions';
-import { FilesState } from '../state/files.state';
 
 @Component({
   selector: 'app-front-page',
   templateUrl: './front-page.component.html',
   styleUrls: ['./front-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FrontPageComponent implements OnInit {
   recentlyOpenedFiles: Observable<string[]>;

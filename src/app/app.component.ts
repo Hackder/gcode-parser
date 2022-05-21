@@ -1,10 +1,34 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  NavigationStart,
+  Router,
+} from '@angular/router';
+import { filter, map, Observable, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  title = 'gcode-parser';
+  isLoading$: Observable<boolean>;
+
+  constructor(router: Router) {
+    const validEvents = [
+      NavigationStart,
+      NavigationEnd,
+      NavigationCancel,
+      NavigationError,
+    ];
+
+    this.isLoading$ = router.events.pipe(
+      tap(console.log),
+      filter((event) => validEvents.some((e) => event instanceof e)),
+      map((event) => event instanceof NavigationStart)
+    );
+  }
 }
