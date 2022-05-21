@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="openFileButton" datatype="html">
+        <source>Open file</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/front-page/front-page.component.html</context>
+          <context context-type="linenumber">8,11</context>
+        </context-group>
+        <note priority="1" from="description">Open file button text</note>
+        <note priority="1" from="meaning">Open file</note>
+      </trans-unit>
+      <trans-unit id="recentlyOpenedFiles" datatype="html">
+        <source> Recently opened </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/front-page/front-page.component.html</context>
+          <context context-type="linenumber">18,23</context>
+        </context-group>
+        <note priority="1" from="description">A subheader for recently opened files
+        section</note>
+        <note priority="1" from="meaning">Recently opened files</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

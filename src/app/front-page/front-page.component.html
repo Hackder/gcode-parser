@@ -4,11 +4,19 @@
       pButton
       (click)="openDialog()"
       type="button"
+      i18n-label="Open file|Open file button text@@openFileButton"
       label="Open file"
       class="p-button-sm"
       icon="pi pi-file"
     ></button>
-    <h2 class="text-500 text-base mb-1 mt-3">Recent</h2>
+    <h2
+      i18n="
+        Recently opened files|A subheader for recently opened files
+        section@@recentlyOpenedFiles"
+      class="text-500 text-base mb-1 mt-3"
+    >
+      Recently opened
+    </h2>
     <div class="flex flex-column align-items-stretch">
       <button
         pButton
