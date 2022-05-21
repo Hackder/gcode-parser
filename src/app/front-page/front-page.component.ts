@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
 import { dialog } from '@tauri-apps/api';
+import { Observable } from 'rxjs';
+import { OpenFile } from '../state/files.actions';
+import { FilesState } from '../state/files.state';
 
 @Component({
   selector: 'app-front-page',
@@ -7,14 +11,13 @@ import { dialog } from '@tauri-apps/api';
   styleUrls: ['./front-page.component.scss'],
 })
 export class FrontPageComponent implements OnInit {
-  recentlyOpened: string[] = [
-    'src/app/front-page/front-page.component.ts',
-    'src/app/app.module.ts',
-    'src/app/app-routing.module.ts',
-    'src/app/app.component.html',
-  ];
+  recentlyOpenedFiles: Observable<string[]>;
 
-  constructor() {}
+  constructor(private store: Store) {
+    this.recentlyOpenedFiles = store.select(
+      (state) => state.files.recentlyOpened
+    );
+  }
 
   async openDialog() {
     const path = await dialog.open({
@@ -32,7 +35,7 @@ export class FrontPageComponent implements OnInit {
   }
 
   openFile(path: string) {
-    console.log('Opened file', path);
+    this.store.dispatch(new OpenFile(path));
   }
 
   ngOnInit(): void {}
