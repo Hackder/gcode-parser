@@ -1,6 +1,11 @@
 import { Action, State, StateContext } from '@ngxs/store';
 import { GCodeTemplate } from './gcodes.state';
-import { AddModification, DeleteModification } from './modifications.actions';
+import {
+  AddGCodeToModification,
+  AddModification,
+  DeleteModification,
+  RemoveGCodeFromModification,
+} from './modifications.actions';
 
 export interface ModifiableProperty {
   key: string;
@@ -67,5 +72,45 @@ export class ModificationsState {
     action: DeleteModification
   ) {
     ctx.setState(ctx.getState().filter((m) => m !== action.modification));
+  }
+
+  @Action(AddGCodeToModification)
+  addGCodeToModification(
+    ctx: StateContext<ModificationModel[]>,
+    action: AddGCodeToModification
+  ) {
+    const modificationIndex = ctx
+      .getState()
+      .findIndex((m) => m === action.modification);
+
+    const modification: ModificationModel = {
+      ...action.modification,
+      inserts: [...action.modification.inserts, action.gcode],
+    };
+
+    const newModifications = [...ctx.getState()];
+    newModifications[modificationIndex] = modification;
+
+    ctx.setState(newModifications);
+  }
+
+  @Action(RemoveGCodeFromModification)
+  deleteGCodeFromModification(
+    ctx: StateContext<ModificationModel[]>,
+    action: RemoveGCodeFromModification
+  ) {
+    const modificationIndex = ctx
+      .getState()
+      .findIndex((m) => m === action.modification);
+
+    const modification: ModificationModel = {
+      ...action.modification,
+      inserts: action.modification.inserts.filter((i) => i !== action.gcode),
+    };
+
+    const newModifications = [...ctx.getState()];
+    newModifications[modificationIndex] = modification;
+
+    ctx.setState(newModifications);
   }
 }

@@ -1,0 +1,46 @@
+<form class="grid p-fluid" [formGroup]="gcodeForm" (ngSubmit)="addGCode()">
+  <div class="field col-12">
+    <label class="block">GCode Template</label>
+    <p-dropdown
+      [options]="results"
+      optionLabel="description"
+      [filter]="true"
+      filterBy="description"
+      filterMatchMode="alwaysTrue"
+      placeholder="Select GCode Template"
+      formControlName="gcodeTemplate"
+      (onFilter)="onFilter($event)"
+    >
+      <ng-template let-item pTemplate="selectedItem">
+        <strong>{{ item.gcode }}</strong>
+        <span> - {{ item.description }}</span>
+      </ng-template>
+      <ng-template let-item pTemplate="item">
+        <strong>{{ item.gcode }}</strong>
+        <span> - {{ item.description }}</span>
+      </ng-template>
+    </p-dropdown>
+  </div>
+  <div class="field col-12" formGroupName="properties">
+    <div class="flex flex-row template-container pl-3">
+      <ng-container *ngFor="let part of templateParts | async">
+        <span *ngIf="part.type === 'text'">{{ part.text }}</span>
+        <label class="input-sizer" *ngIf="part.type === 'prop'">
+          <input
+            type="text"
+            onInput="this.parentNode.dataset.value = this.value"
+            size="1"
+            placeholder=" "
+            [formControlName]="part.name"
+          />
+        </label>
+      </ng-container>
+    </div>
+  </div>
+  <button
+    pButton
+    label="Save"
+    type="submit"
+    [disabled]="gcodeForm.invalid"
+  ></button>
+</form>

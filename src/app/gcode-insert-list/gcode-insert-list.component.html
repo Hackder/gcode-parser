@@ -1,0 +1,16 @@
+<div class="flex flex-column">
+  <app-gcode-insert-view
+    *ngFor="let insert of modification?.inserts; index as i"
+    [insert]="insert"
+    [number]="i + 1"
+    (onDelete)="deleteGCodeInsert(insert)"
+  ></app-gcode-insert-view>
+</div>
+
+<button
+  pButton
+  label="Add new"
+  icon="pi pi-plus"
+  class="p-button-sm mt-3"
+  (click)="addGCodeInsert()"
+></button>

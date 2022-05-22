@@ -1,2 +1,7 @@
 <router-outlet></router-outlet>
 <app-loading-overlay *ngIf="isLoading$ | async"></app-loading-overlay>
+<p-confirmDialog
+  key="confirmDelete"
+  acceptButtonStyleClass="p-button-danger"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>

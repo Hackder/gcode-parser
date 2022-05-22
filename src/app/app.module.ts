@@ -16,6 +16,9 @@ import { CreateGCodeComponent } from './create-gcode/create-gcode.component';
 import { ModificationsComponent } from './modifications/modifications.component';
 import { ModificationDialogComponent } from './modification-dialog/modification-dialog.component';
 import { ModificationComponent } from './modification/modification.component';
+import { GCodeInsertDialogComponent } from './gcode-insert-dialog/gcode-insert-dialog.component';
+import { GCodeInsertListComponent } from './gcode-insert-list/gcode-insert-list.component';
+import { GCodeInsertViewComponent } from './gcode-insert-view/gcode-insert-view.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { ModificationComponent } from './modification/modification.component';
     ModificationsComponent,
     ModificationDialogComponent,
     ModificationComponent,
+    GCodeInsertDialogComponent,
+    GCodeInsertListComponent,
+    GCodeInsertViewComponent,
   ],
   imports: [
     BrowserModule,

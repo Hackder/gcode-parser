@@ -1,0 +1,21 @@
+<div class="flex flex-row px-3 py-2 align-items-center list-item">
+  <p class="font-bold mr-4">{{ number }}.</p>
+  <div class="flex flex-column gap-1">
+    <div class="flex flex-row">
+      <ng-container *ngFor="let part of parts">
+        <span *ngIf="part.type === 'text'">{{ part.text }}</span>
+        <span *ngIf="part.type === 'prop'" class="text-primary">{{
+          part.text
+        }}</span>
+      </ng-container>
+    </div>
+    <p class="text-secondary">{{ insert.gcode.description }}</p>
+  </div>
+  <button
+    pButton
+    type="button"
+    icon="pi pi-trash"
+    class="p-button-rounded p-button-danger p-button-text ml-2 ml-auto"
+    (click)="onDelete.emit()"
+  ></button>
+</div>

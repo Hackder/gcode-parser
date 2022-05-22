@@ -27,6 +27,7 @@
     "@ngxs/storage-plugin": "^3.7.3",
     "@ngxs/store": "^3.7.3",
     "@tauri-apps/api": "^1.0.0-rc.5",
+    "fuse.js": "^6.6.2",
     "js-base64": "^3.7.2",
     "primeflex": "^3.2.0",
     "primeicons": "^5.0.0",

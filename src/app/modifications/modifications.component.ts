@@ -34,6 +34,8 @@ export class ModificationsComponent implements OnDestroy {
 
   ref?: DynamicDialogRef;
 
+  activeIndex = 0;
+
   addModification() {
     this.ref = this.dialogService.open(ModificationDialogComponent, {
       header: 'Create Modification',

@@ -2,7 +2,7 @@
   <h1>Modifications</h1>
 
   <p-scrollPanel [style]="{ width: '100%', height: 'calc(100vh - 11rem)' }">
-    <p-accordion>
+    <p-accordion [(activeIndex)]="activeIndex">
       <p-accordionTab
         *ngFor="let modification of modifications | async"
         [transitionOptions]="'0ms'"
@@ -16,7 +16,9 @@
             (click)="deleteModification($event, modification)"
           ></button>
         </ng-template>
-        Content
+        <app-gcode-insert-list
+          [modification]="modification"
+        ></app-gcode-insert-list>
       </p-accordionTab>
     </p-accordion>
   </p-scrollPanel>
@@ -30,9 +32,3 @@
     ></button>
   </footer>
 </div>
-
-<p-confirmDialog
-  key="confirmDelete"
-  acceptButtonStyleClass="p-button-danger"
-  rejectButtonStyleClass="p-button-text"
-></p-confirmDialog>
