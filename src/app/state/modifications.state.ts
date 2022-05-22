@@ -1,11 +1,18 @@
-import { State } from '@ngxs/store';
+import { Action, State, StateContext } from '@ngxs/store';
 import { GCodeTemplate } from './gcodes.state';
+import { AddModification, DeleteModification } from './modifications.actions';
+
+export interface ModifiableProperty {
+  key: string;
+  name: string;
+  type: 'number' | 'text';
+}
 
 export interface ModificationLocation {
   type: string;
   name: string;
   getFormattedName(): string;
-  readonly modifiableProperties: { key: string; name: string }[];
+  readonly modifiableProperties: ModifiableProperty[];
   [key: string]: any;
 }
 
@@ -17,6 +24,7 @@ export class AfterLayerModificationLoaction implements ModificationLocation {
     {
       key: 'layerNumber',
       name: 'Layer Number',
+      type: 'number' as const,
     },
   ];
   layerNumber: number = 0;
@@ -38,4 +46,26 @@ export interface ModificationModel {
   name: 'modifications',
   defaults: [],
 })
-export class ModificationsState {}
+export class ModificationsState {
+  @Action(AddModification)
+  addModification(
+    ctx: StateContext<ModificationModel[]>,
+    action: AddModification
+  ) {
+    ctx.setState([
+      ...ctx.getState(),
+      {
+        location: action.modification,
+        inserts: [],
+      },
+    ]);
+  }
+
+  @Action(DeleteModification)
+  deleteModification(
+    ctx: StateContext<ModificationModel[]>,
+    action: DeleteModification
+  ) {
+    ctx.setState(ctx.getState().filter((m) => m !== action.modification));
+  }
+}

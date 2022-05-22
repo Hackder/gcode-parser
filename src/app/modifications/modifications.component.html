@@ -6,8 +6,16 @@
       <p-accordionTab
         *ngFor="let modification of modifications | async"
         [transitionOptions]="'0ms'"
-        [header]="modification.location.getFormattedName()"
       >
+        <ng-template pTemplate="header">
+          {{ modification.location.getFormattedName() }}
+          <button
+            pButton
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger p-button-text absolute right-0 mr-3"
+            (click)="deleteModification($event, modification)"
+          ></button>
+        </ng-template>
         Content
       </p-accordionTab>
     </p-accordion>
@@ -22,3 +30,9 @@
     ></button>
   </footer>
 </div>
+
+<p-confirmDialog
+  key="confirmDelete"
+  acceptButtonStyleClass="p-button-danger"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>

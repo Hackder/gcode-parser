@@ -7,6 +7,8 @@ import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { AccordionModule } from 'primeng/accordion';
 import { DropdownModule } from 'primeng/dropdown';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   exports: [
@@ -18,7 +20,8 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     AccordionModule,
     DropdownModule,
+    ConfirmDialogModule,
   ],
-  providers: [DialogService],
+  providers: [DialogService, ConfirmationService],
 })
 export class PrimeModulesModule {}

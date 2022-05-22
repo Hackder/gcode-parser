@@ -28,7 +28,7 @@
       <div class="field col-12" *ngIf="getForProp(prop.key) as control">
         <label class="block">{{ prop.name }}</label>
         <input
-          type="text"
+          [type]="prop.type"
           pInputText
           [formControlName]="prop.key"
           [ngClass]="{
@@ -50,6 +50,12 @@
     pButton
     label="Save"
     type="submit"
-    [disabled]="modificationForm.invalid"
+    [disabled]="invalid | async"
   ></button>
+  <small
+    *ngIf="!(isUnique | async) && modificationForm.dirty"
+    class="p-error block"
+  >
+    Exactly this modification already exists
+  </small>
 </form>

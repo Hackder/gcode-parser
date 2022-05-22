@@ -6,10 +6,11 @@ import { NgxsModule } from '@ngxs/store';
 import { environment } from 'src/environments/environment';
 import { FilesState } from './files.state';
 import { GCodeState } from './gcodes.state';
+import { ModificationsState } from './modifications.state';
 
 @NgModule({
   imports: [
-    NgxsModule.forRoot([FilesState, GCodeState], {
+    NgxsModule.forRoot([FilesState, GCodeState, ModificationsState], {
       developmentMode: !environment.production,
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),

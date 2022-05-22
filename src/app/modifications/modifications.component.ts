@@ -1,9 +1,13 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
+import { ConfirmationService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { filter, Observable, Subject, takeUntil } from 'rxjs';
 import { ModificationDialogComponent } from '../modification-dialog/modification-dialog.component';
-import { AddModification } from '../state/modifications.actions';
+import {
+  AddModification,
+  DeleteModification,
+} from '../state/modifications.actions';
 import {
   ModificationLocation,
   ModificationModel,
@@ -20,7 +24,11 @@ export class ModificationsComponent implements OnDestroy {
 
   modifications: Observable<ModificationModel[]>;
 
-  constructor(private store: Store, private dialogService: DialogService) {
+  constructor(
+    private store: Store,
+    private dialogService: DialogService,
+    private confirmationService: ConfirmationService
+  ) {
     this.modifications = store.select(ModificationsState);
   }
 
@@ -38,6 +46,20 @@ export class ModificationsComponent implements OnDestroy {
       .subscribe((value: ModificationLocation) => {
         this.store.dispatch(new AddModification(value));
       });
+  }
+
+  deleteModification(e: MouseEvent, modification: ModificationModel) {
+    e.stopPropagation();
+
+    this.confirmationService.confirm({
+      key: 'confirmDelete',
+      message: `Are you sure you want to delete the modification "${modification.location.getFormattedName()}"?`,
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.store.dispatch(new DeleteModification(modification));
+      },
+    });
   }
 
   ngOnDestroy(): void {
