@@ -1,6 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { fs } from '@tauri-apps/api';
+import {
+  ModificationModel,
+  ModificationsState,
+} from '../state/modifications.state';
 import { GCodeFile } from '../types/file';
+import { modifyFile } from '../utils/modifyFile';
 
 @Component({
   selector: 'app-editor-page',
@@ -8,12 +15,20 @@ import { GCodeFile } from '../types/file';
   styleUrls: ['./editor-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditorPageComponent implements OnInit {
+export class EditorPageComponent {
   file: GCodeFile;
 
-  constructor(route: ActivatedRoute) {
+  constructor(route: ActivatedRoute, private store: Store) {
     this.file = route.snapshot.data['file'];
   }
 
-  ngOnInit(): void {}
+  saveModified(path: string) {
+    const currentModifications =
+      this.store.selectSnapshot<ModificationModel[]>(ModificationsState);
+
+    fs.writeFile({
+      contents: modifyFile(this.file.content, currentModifications),
+      path,
+    });
+  }
 }

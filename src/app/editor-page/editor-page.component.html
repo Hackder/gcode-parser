@@ -1,6 +1,8 @@
 <div class="container">
   <div class="state">
-    <app-modifications></app-modifications>
+    <app-modifications
+      (saveModified)="saveModified($event)"
+    ></app-modifications>
   </div>
   <div class="gcodes">
     <app-gcode-list></app-gcode-list>

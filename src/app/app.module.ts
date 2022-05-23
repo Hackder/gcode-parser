@@ -19,6 +19,7 @@ import { ModificationComponent } from './modification/modification.component';
 import { GCodeInsertDialogComponent } from './gcode-insert-dialog/gcode-insert-dialog.component';
 import { GCodeInsertListComponent } from './gcode-insert-list/gcode-insert-list.component';
 import { GCodeInsertViewComponent } from './gcode-insert-view/gcode-insert-view.component';
+import { ModificationFormattedNamePipe } from './pipes/modification-formatted-name.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { GCodeInsertViewComponent } from './gcode-insert-view/gcode-insert-view.
     GCodeInsertDialogComponent,
     GCodeInsertListComponent,
     GCodeInsertViewComponent,
+    ModificationFormattedNamePipe,
   ],
   imports: [
     BrowserModule,

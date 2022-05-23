@@ -1,14 +1,26 @@
 <div class="pl-3">
-  <h1>Modifications</h1>
+  <div class="flex flex-row align-items-center gap-4">
+    <h1>Modifications</h1>
+    <div class="flex align-items-center justify-content-center">
+      <button
+        pButton
+        [routerLink]="['/front-page']"
+        label="Back"
+        icon="pi pi-arrow-left"
+        class="p-button-text p-button-secondary p-button-sm"
+      ></button>
+    </div>
+    <p class="text-color-secondary">{{ currentFilepath | async }}</p>
+  </div>
 
   <p-scrollPanel [style]="{ width: '100%', height: 'calc(100vh - 11rem)' }">
-    <p-accordion [(activeIndex)]="activeIndex">
+    <p-accordion [multiple]="true" [(activeIndex)]="activeIndex">
       <p-accordionTab
         *ngFor="let modification of modifications | async"
         [transitionOptions]="'0ms'"
       >
         <ng-template pTemplate="header">
-          {{ modification.location.getFormattedName() }}
+          {{ modification.location | modificationFormattedName }}
           <button
             pButton
             icon="pi pi-trash"
@@ -23,6 +35,15 @@
     </p-accordion>
   </p-scrollPanel>
   <footer class="flex flex-row justify-content-end pt-3">
+    <button
+      pButton
+      type="button"
+      icon="pi pi-save"
+      label="Save modified as"
+      class="p-button-outlined mr-3"
+      [disabled]="(modifications | async)?.length === 0"
+      (click)="saveModifiedFile()"
+    ></button>
     <button
       pButton
       type="button"

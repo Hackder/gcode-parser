@@ -16,7 +16,6 @@ export interface ModifiableProperty {
 export interface ModificationLocation {
   type: string;
   name: string;
-  getFormattedName(): string;
   readonly modifiableProperties: ModifiableProperty[];
   [key: string]: any;
 }
@@ -24,7 +23,6 @@ export interface ModificationLocation {
 export class AfterLayerModificationLoaction implements ModificationLocation {
   type = 'after-layer' as const;
   name = 'After Layer' as const;
-  getFormattedName = (): string => `${this.name} ${this.layerNumber}`;
   modifiableProperties = [
     {
       key: 'layerNumber',
@@ -35,7 +33,9 @@ export class AfterLayerModificationLoaction implements ModificationLocation {
   layerNumber: number = 0;
 }
 
-export const AllModificationLocations = [AfterLayerModificationLoaction];
+export const AllModificationLocations = [
+  AfterLayerModificationLoaction,
+] as const;
 
 export interface Insert {
   gcode: GCodeTemplate;

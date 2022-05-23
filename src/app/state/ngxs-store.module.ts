@@ -15,7 +15,9 @@ import { ModificationsState } from './modifications.state';
     }),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({ key: ['files', 'gcodes'] }),
+    NgxsStoragePluginModule.forRoot({
+      key: ['files', 'gcodes', 'modifications'],
+    }),
   ],
   exports: [NgxsModule],
 })

@@ -1,8 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ConfirmationService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { filter, Observable, Subject, takeUntil } from 'rxjs';
+import { filter, map, Observable, Subject, takeUntil } from 'rxjs';
 import { ModificationDialogComponent } from '../modification-dialog/modification-dialog.component';
 import {
   AddModification,
@@ -13,6 +13,9 @@ import {
   ModificationModel,
   ModificationsState,
 } from '../state/modifications.state';
+import { dialog } from '@tauri-apps/api';
+import { FilesModel, FilesState } from '../state/files.state';
+import { getFormattedName } from '../utils/modifications';
 
 @Component({
   selector: 'app-modifications',
@@ -24,17 +27,25 @@ export class ModificationsComponent implements OnDestroy {
 
   modifications: Observable<ModificationModel[]>;
 
+  currentFilepath: Observable<string>;
+
+  @Output()
+  saveModified = new EventEmitter<string>();
+
   constructor(
     private store: Store,
     private dialogService: DialogService,
     private confirmationService: ConfirmationService
   ) {
     this.modifications = store.select(ModificationsState);
+    this.currentFilepath = store
+      .select<FilesModel>(FilesState)
+      .pipe(map((f) => f.currentFilepath));
   }
 
   ref?: DynamicDialogRef;
 
-  activeIndex = 0;
+  activeIndex: number[] = [];
 
   addModification() {
     this.ref = this.dialogService.open(ModificationDialogComponent, {
@@ -55,13 +66,36 @@ export class ModificationsComponent implements OnDestroy {
 
     this.confirmationService.confirm({
       key: 'confirmDelete',
-      message: `Are you sure you want to delete the modification "${modification.location.getFormattedName()}"?`,
+      message: `Are you sure you want to delete the modification "${getFormattedName(
+        modification.location
+      )}"?`,
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.store.dispatch(new DeleteModification(modification));
       },
     });
+  }
+
+  async saveModifiedFile() {
+    const savePath =
+      this.store.selectSnapshot<FilesModel>(FilesState).currentFilepath;
+    const newSavePath = savePath.replace(/\.gcode$/, '-modified.gcode');
+
+    const path = await dialog.save({
+      title: 'Save Modified File',
+      defaultPath: newSavePath,
+      filters: [
+        {
+          name: 'G-Code',
+          extensions: ['gcode'],
+        },
+      ],
+    });
+
+    if (!path) return;
+
+    this.saveModified.emit(path);
   }
 
   ngOnDestroy(): void {
