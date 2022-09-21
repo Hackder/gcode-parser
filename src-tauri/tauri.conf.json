@@ -23,7 +23,9 @@
       "fs": {
         "readFile": true,
         "writeFile": true,
-        "scope": ["**"]
+        "scope": [
+          "**"
+        ]
       }
     },
     "bundle": {
@@ -41,7 +43,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.gcode-parser.jurajpetras.com",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
