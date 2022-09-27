@@ -1,4 +1,5 @@
 <div class="h-full w-full flex justify-content-center align-items-center">
+  <pre>{{ locationText }}</pre>
   <div class="flex flex-column container" pFocusTrap>
     <button
       pButton
@@ -27,4 +28,10 @@
       ></button>
     </div>
   </div>
+  <button
+    pButton
+    label="Change Language"
+    class="p-button-text language-button"
+    (click)="changeLanguage()"
+  ></button>
 </div>

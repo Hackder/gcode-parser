@@ -1,6 +1,11 @@
 <form class="grid p-fluid" [formGroup]="gcodeForm" (ngSubmit)="createGCode()">
   <div class="field col-12">
-    <label for="gcode-template-text" class="block">GCode template text</label>
+    <label
+      for="gcode-template-text"
+      class="block"
+      i18n="GCode template input label@@gcodeTemplateLabel"
+      >GCode template text</label
+    >
     <input
       type="text"
       id="gcode-template-text"
@@ -14,24 +19,44 @@
       }"
     />
     <ng-container *ngIf="gcode?.invalid && (gcode?.dirty || gcode?.touched)">
-      <small *ngIf="gcode?.errors?.['required']" class="p-error block">
+      <small
+        *ngIf="gcode?.errors?.['required']"
+        class="p-error block"
+        i18n="GCode template required@@gcodeTemplateRequired"
+      >
         GCode template is required
       </small>
-      <small *ngIf="gcode?.errors?.['pattern']" class="p-error block">
+      <small
+        *ngIf="gcode?.errors?.['pattern']"
+        class="p-error block"
+        i18n="GCode cannot contain semicolon@@gcodeNoSemicolon"
+      >
         GCode template cannot contain ";"
       </small>
-      <small *ngIf="gcode?.errors?.['uniqueGCode']" class="p-error block">
+      <small
+        *ngIf="gcode?.errors?.['uniqueGCode']"
+        class="p-error block"
+        i18n="GCode template already exists@@gcodeTemplateExists"
+      >
         This GCode template already exists
       </small>
     </ng-container>
   </div>
   <div class="field col-12">
-    <label for="gcode-template-description" class="block">Description</label>
+    <label
+      for="gcode-template-description"
+      class="block"
+      i18n="Description@@description"
+      >Description</label
+    >
     <input
       type="text"
       id="gcode-template-description"
       pInputText
       placeholder="Move head to specified..."
+      i18n-placeholder="
+        GCode template description
+        placeholder@@gcodeTemplateDescriptionPlaceholder"
       formControlName="description"
       [ngClass]="{
         'ng-invalid': description?.invalid,
@@ -43,7 +68,11 @@
         description?.invalid && (description?.dirty || description?.touched)
       "
     >
-      <small *ngIf="description?.errors?.['required']" class="p-error block">
+      <small
+        *ngIf="description?.errors?.['required']"
+        class="p-error block"
+        i18n="Description required@@descriptionRequired"
+      >
         Description is required
       </small>
     </ng-container>
@@ -51,6 +80,7 @@
   <button
     pButton
     label="Save"
+    i18n-label="Save button text@@saveButtonText"
     type="submit"
     [disabled]="gcodeForm.invalid"
   ></button>
@@ -58,6 +88,7 @@
     pButton
     *ngIf="editMode"
     label="Delete"
+    i18n-label="Delete button text@@deleteButtonText"
     type="button"
     class="mt-2 p-button-danger p-button-outlined"
     (click)="deleteGCode()"

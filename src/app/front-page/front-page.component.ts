@@ -38,5 +38,26 @@ export class FrontPageComponent implements OnInit {
     this.store.dispatch(new OpenFile(path));
   }
 
-  ngOnInit(): void {}
+  locationText: string = '';
+
+  changeLanguage() {
+    // this.locationText = JSON.stringify(window.location, null, 2);
+    // return;
+
+    if (window.location.href.includes('en-US')) {
+      window.location.pathname = '/sk-SK';
+      localStorage.setItem('language', 'sk-SK');
+    } else {
+      window.location.pathname = '/en-US';
+      localStorage.setItem('language', 'en-US');
+    }
+  }
+
+  ngOnInit(): void {
+    const language = localStorage.getItem('language');
+    if (!language || language === 'en-US') return;
+    if (window.location.href.includes('sk-SK')) return;
+
+    this.changeLanguage();
+  }
 }

@@ -4,11 +4,19 @@
   (ngSubmit)="addModification()"
 >
   <div class="field col-12">
-    <label for="location-type" class="block">Modification location</label>
+    <label
+      for="location-type"
+      class="block"
+      i18n="Modification location in modal@@modificationLocationCreateModal"
+      >Modification location</label
+    >
     <p-dropdown
       id="location-type"
       [options]="availableModifications"
       placeholder="Select modification location"
+      i18n-placeholder="
+        Select modification location
+        placeholder@@selectModificationLocationPlaceholder"
       optionLabel="name"
       optionValue="type"
       formControlName="type"
@@ -18,7 +26,13 @@
       }"
     ></p-dropdown>
     <ng-container *ngIf="type?.invalid && (type?.dirty || type?.touched)">
-      <small *ngIf="type?.errors?.['required']" class="p-error block">
+      <small
+        *ngIf="type?.errors?.['required']"
+        class="p-error block"
+        i18n="
+          Modification location required error
+          text@@modificationLocationRequired"
+      >
         Modification location is required
       </small>
     </ng-container>
@@ -40,7 +54,8 @@
           *ngIf="control?.invalid && (control?.dirty || control?.touched)"
         >
           <small *ngIf="control?.errors?.['required']" class="p-error block">
-            {{ prop.name }} is required
+            {{ prop.name }}
+            <span i18n="Is required text@@isRequired">is required</span>
           </small>
         </ng-container>
       </div>
@@ -55,6 +70,7 @@
   <small
     *ngIf="!(isUnique | async) && modificationForm.dirty"
     class="p-error block"
+    i18n="Modification already exists text@@modificationAlreadyExists"
   >
     Exactly this modification already exists
   </small>

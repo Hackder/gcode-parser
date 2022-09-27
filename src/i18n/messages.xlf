@@ -2,11 +2,88 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
+      <trans-unit id="gcodeTemplateLabel" datatype="html">
+        <source>GCode template text</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">GCode template input label</note>
+      </trans-unit>
+      <trans-unit id="gcodeTemplateRequired" datatype="html">
+        <source> GCode template is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">26,28</context>
+        </context-group>
+        <note priority="1" from="description">GCode template required</note>
+      </trans-unit>
+      <trans-unit id="gcodeNoSemicolon" datatype="html">
+        <source> GCode template cannot contain &quot;;&quot; </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+        <note priority="1" from="description">GCode cannot contain semicolon</note>
+      </trans-unit>
+      <trans-unit id="gcodeTemplateExists" datatype="html">
+        <source> This GCode template already exists </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">40,42</context>
+        </context-group>
+        <note priority="1" from="description">GCode template already exists</note>
+      </trans-unit>
+      <trans-unit id="description" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <note priority="1" from="description">Description</note>
+      </trans-unit>
+      <trans-unit id="gcodeTemplateDescriptionPlaceholder" datatype="html">
+        <source>Move head to specified...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+        <note priority="1" from="description">GCode template description
+        placeholder</note>
+      </trans-unit>
+      <trans-unit id="descriptionRequired" datatype="html">
+        <source> Description is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">75,77</context>
+        </context-group>
+        <note priority="1" from="description">Description required</note>
+      </trans-unit>
+      <trans-unit id="saveButtonText" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/gcode-insert-dialog/gcode-insert-dialog.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <note priority="1" from="description">Save button text</note>
+      </trans-unit>
+      <trans-unit id="deleteButtonText" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/create-gcode/create-gcode.component.html</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+        <note priority="1" from="description">Delete button text</note>
+      </trans-unit>
       <trans-unit id="openFileButton" datatype="html">
         <source>Open file</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/front-page/front-page.component.html</context>
-          <context context-type="linenumber">8,11</context>
+          <context context-type="linenumber">8,12</context>
         </context-group>
         <note priority="1" from="description">Open file button text</note>
         <note priority="1" from="meaning">Open file</note>
@@ -15,11 +92,119 @@
         <source> Recently opened </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/front-page/front-page.component.html</context>
-          <context context-type="linenumber">18,23</context>
+          <context context-type="linenumber">17,22</context>
         </context-group>
         <note priority="1" from="description">A subheader for recently opened files
         section</note>
         <note priority="1" from="meaning">Recently opened files</note>
+      </trans-unit>
+      <trans-unit id="gcodeTemplate" datatype="html">
+        <source>GCode Template</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/gcode-insert-dialog/gcode-insert-dialog.component.html</context>
+          <context context-type="linenumber">4,7</context>
+        </context-group>
+        <note priority="1" from="description">GCode Template text</note>
+      </trans-unit>
+      <trans-unit id="gcodeTemplateSelectionPlaceholder" datatype="html">
+        <source>Select GCode Template</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/gcode-insert-dialog/gcode-insert-dialog.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+        <note priority="1" from="description">GCode Template selection placeholder</note>
+      </trans-unit>
+      <trans-unit id="addNewGCodeInsert" datatype="html">
+        <source>Add new</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/gcode-insert-list/gcode-insert-list.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">Inside existing modification</note>
+        <note priority="1" from="meaning">Add new GCode insert</note>
+      </trans-unit>
+      <trans-unit id="allGCodesHeader" datatype="html">
+        <source> All GCodes </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/gcode-list/gcode-list.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+        <note priority="1" from="description">All GCodes list header</note>
+      </trans-unit>
+      <trans-unit id="modificationLocationCreateModal" datatype="html">
+        <source>Modification location</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modification-dialog/modification-dialog.component.html</context>
+          <context context-type="linenumber">11,15</context>
+        </context-group>
+        <note priority="1" from="description">Modification location in modal</note>
+      </trans-unit>
+      <trans-unit id="selectModificationLocationPlaceholder" datatype="html">
+        <source>Select modification location</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modification-dialog/modification-dialog.component.html</context>
+          <context context-type="linenumber">16,19</context>
+        </context-group>
+        <note priority="1" from="description">Select modification location
+        placeholder</note>
+      </trans-unit>
+      <trans-unit id="modificationLocationRequired" datatype="html">
+        <source> Modification location is required </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modification-dialog/modification-dialog.component.html</context>
+          <context context-type="linenumber">36,40</context>
+        </context-group>
+        <note priority="1" from="description">Modification location required error
+          text</note>
+      </trans-unit>
+      <trans-unit id="isRequired" datatype="html">
+        <source>is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modification-dialog/modification-dialog.component.html</context>
+          <context context-type="linenumber">58,60</context>
+        </context-group>
+        <note priority="1" from="description">Is required text</note>
+      </trans-unit>
+      <trans-unit id="modificationAlreadyExists" datatype="html">
+        <source> Exactly this modification already exists </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modification-dialog/modification-dialog.component.html</context>
+          <context context-type="linenumber">75,78</context>
+        </context-group>
+        <note priority="1" from="description">Modification already exists text</note>
+      </trans-unit>
+      <trans-unit id="modificationsPageTitle" datatype="html">
+        <source> Modifications </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modifications/modifications.component.html</context>
+          <context context-type="linenumber">7,10</context>
+        </context-group>
+        <note priority="1" from="description">Modifications page title</note>
+        <note priority="1" from="meaning">Modifications title</note>
+      </trans-unit>
+      <trans-unit id="backButton" datatype="html">
+        <source>Back</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modifications/modifications.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="description">Back button</note>
+      </trans-unit>
+      <trans-unit id="saveModifiedAsButton" datatype="html">
+        <source>Save modified as</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modifications/modifications.component.html</context>
+          <context context-type="linenumber">48,49</context>
+        </context-group>
+        <note priority="1" from="description">Save modified as button</note>
+      </trans-unit>
+      <trans-unit id="addModificationButton" datatype="html">
+        <source>Add modification</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/modifications/modifications.component.html</context>
+          <context context-type="linenumber">58,59</context>
+        </context-group>
+        <note priority="1" from="description">Add modification button</note>
       </trans-unit>
     </body>
   </file>

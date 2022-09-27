@@ -1,11 +1,17 @@
 <div class="pl-3">
   <div class="flex flex-row align-items-center gap-4">
-    <h1>Modifications</h1>
+    <h1
+      i18n="
+        Modifications title|Modifications page title@@modificationsPageTitle"
+    >
+      Modifications
+    </h1>
     <div class="flex align-items-center justify-content-center">
       <button
         pButton
         [routerLink]="['/front-page']"
         label="Back"
+        i18n-label="Back button@@backButton"
         icon="pi pi-arrow-left"
         class="p-button-text p-button-secondary p-button-sm"
       ></button>
@@ -40,6 +46,7 @@
       type="button"
       icon="pi pi-save"
       label="Save modified as"
+      i18n-label="Save modified as button@@saveModifiedAsButton"
       class="p-button-outlined mr-3"
       [disabled]="(modifications | async)?.length === 0"
       (click)="saveModifiedFile()"
@@ -49,6 +56,7 @@
       type="button"
       icon="pi pi-plus"
       label="Add modification"
+      i18n-label="Add modification button@@addModificationButton"
       (click)="addModification()"
     ></button>
   </footer>

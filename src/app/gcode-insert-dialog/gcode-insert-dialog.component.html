@@ -1,6 +1,8 @@
 <form class="grid p-fluid" [formGroup]="gcodeForm" (ngSubmit)="addGCode()">
   <div class="field col-12">
-    <label class="block">GCode Template</label>
+    <label class="block" i18n="GCode Template text@@gcodeTemplate"
+      >GCode Template</label
+    >
     <p-dropdown
       [options]="results"
       optionLabel="description"
@@ -8,6 +10,8 @@
       filterBy="description"
       filterMatchMode="alwaysTrue"
       placeholder="Select GCode Template"
+      i18n-placeholder="
+        GCode Template selection placeholder@@gcodeTemplateSelectionPlaceholder"
       formControlName="gcodeTemplate"
       (onFilter)="onFilter($event)"
     >
@@ -40,6 +44,7 @@
   <button
     pButton
     label="Save"
+    i18n-label="Save button text@@saveButtonText"
     type="submit"
     [disabled]="gcodeForm.invalid"
   ></button>
